@@ -34,6 +34,8 @@ function setup() {
 
     start = grid[0][0];
     end = grid[cols - 1][rows -1];
+    start.wall = false;
+    end.wall = false;
 
     openSet.push(start);
 }
@@ -63,7 +65,7 @@ function draw() {
         for (let i in neighbors) {
             let neighbor = neighbors[i];
 
-            if (!closedSet.includes(neighbor)) {
+            if (!closedSet.includes(neighbor) && !neighbor.wall) {
                 let tempG = current.g + 1;
 
                 if (openSet.includes(neighbor)) {

@@ -4,6 +4,8 @@ class Spot {
         this.j = j;
         this.neighbors = [];
         this.previous = undefined;
+        this.wall = false;
+        if (random(1) < 0.3) this.wall = true;
 
         this.f = 0;
         this.g = 0;
@@ -12,6 +14,7 @@ class Spot {
 
     show(col) {
         fill(col);
+        if (this.wall) fill(0);
         noStroke();
         rect(this.i * w, this.j * h, w - 1, h - 1);
     }
